@@ -24,4 +24,32 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Please fill out all fields before submitting.');
         }
     });
+
+    // Slideshow functionality
+    const images = [
+        'images/image1.jpg',
+        'images/image2.jpg',
+        'images/image3.jpg',
+        'images/image4.jpg'
+    ];
+    let currentIndex = 0;
+
+    const slideshowImage = document.getElementById('slideshow-image');
+
+    function updateSlideshow() {
+        slideshowImage.src = images[currentIndex];
+    }
+
+    document.getElementById('prev-btn').addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        updateSlideshow();
+    });
+
+    document.getElementById('next-btn').addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % images.length;
+        updateSlideshow();
+    });
+
+    // Initialize slideshow
+    updateSlideshow();
 });
